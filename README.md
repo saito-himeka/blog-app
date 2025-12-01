@@ -10,7 +10,7 @@
 
 1. **リポジトリをクローン**
 ```bash
-git clone git@github.com:saito-himeka/test_contact-form.git
+git clone git@github.com:saito-himeka/blog-app.git
 cd test_contact-form
 ```
 
@@ -60,3 +60,26 @@ php artisan migrate
     - パスワード:laravel_pass
 
 ## ER図
+erDiagram
+    %% エンティティの定義
+    POSTS ||--o{ CATEGORIES : "has one"
+    
+    CATEGORIES {
+        BIGINT id PK
+        VARCHAR name
+        TIMESTAMP created_at
+        TIMESTAMP updated_at
+    }
+
+    POSTS {
+        BIGINT id PK
+        BIGINT category_id FK "Categoryに紐づく"
+        VARCHAR title
+        TEXT body
+        VARCHAR image_path
+        TIMESTAMP created_at
+        TIMESTAMP updated_at
+    }
+
+    %% リレーションシップの定義 (1対多)
+    CATEGORIES ||--o{ POSTS : has
