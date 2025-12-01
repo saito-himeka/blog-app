@@ -60,6 +60,8 @@ php artisan migrate
     - パスワード:laravel_pass
 
 ## ER図
+
+```mermaid
 erDiagram
     %% エンティティの定義
     POSTS ||--o{ CATEGORIES : "has one"
